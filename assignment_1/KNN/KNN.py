@@ -14,14 +14,14 @@ test_set=datasets.MNIST(root="../../dataset/test_data",train=False,download=True
 
 def knn_test():
     acc_all = []
-    for k in range(1,10):
+    for k in range(1,11):
         print(k)
         classifier = KNeighborsClassifier(n_neighbors=k, algorithm='kd_tree',p=1, n_jobs=-1)
         knn = classifier.fit(train_img.reshape(60000,-1), train_label)
         acc = knn.score(test_img.reshape(10000,-1), test_label)
         acc_all.append(acc)
     acc_all = np.array(acc_all)
-    plt.plot(np.arange(1,10), acc_all)
+    plt.plot(np.arange(1,11), acc_all)
     plt.show()
 
 
